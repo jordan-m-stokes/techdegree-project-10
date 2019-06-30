@@ -99,7 +99,7 @@ router.get('/page/:page', (request, response, next) =>
 	}
 
 	//sets the ordering in the config based on the query in the request
-	if(Object.keys(Book.rawAttributes).includes(order))
+	if(Object.keys(Book.rawAttributes).includes(order) && order != "year")
 	{
 		config.order = [[order, "ASC"]];
 	}
