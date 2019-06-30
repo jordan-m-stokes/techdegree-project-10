@@ -1,0 +1,42 @@
+extends layout.pug
+
+block content
+  h1 Books
+  nav
+    p.new-book
+      a.button(href='/books/new') Create New Book
+    form(action=`/books/page/1` method="get")
+      input(type="search" onfocus="this.select();" name="search" placeholder="Search..." value=search)
+      input(class="hidden" type="text" name="order" value=order)
+      input(class="hidden" type="submit")
+      
+  div.content
+    table
+      thead
+        tr
+          th 
+            a(class=tableAttributes.title.class href=tableAttributes.title.href) Title
+          th
+            a(class=tableAttributes.author.class href=tableAttributes.author.href) Author
+          th 
+            a(class=tableAttributes.genre.class href=tableAttributes.genre.href) Genre
+          th 
+            a(class=tableAttributes.year.class href=tableAttributes.year.href) Year
+      tbody
+        each book in books
+            tr
+              td
+                a(href=`/books/edit/${book.id}`)= book.title
+              td= book.author
+              td= book.genre
+              td= book.year
+  - var i = 0;
+
+  ul.page-list
+    if pageLinks.length > 1
+      while i < pageLinks.length
+        li
+          if (i + 1) === page
+            a(href=pageLinks[i] class="selected")= ++i
+          else
+            a(href=pageLinks[i])= ++i
