@@ -11,4 +11,4 @@ This is an sequelize/express based database application that allows for easy sea
 * pug
 
 ## Setup
-Just clone this project and type `npm install` to install dependencies and `npm run` to run
+Just clone this project and type `npm install` to install dependencies and `npm start` to run server
